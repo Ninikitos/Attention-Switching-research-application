@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'main/session.css' %}">
+{% endblock %}
+
+{% block title %}Round {{ current_round }}{% endblock %}
+
+{% block content %}
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div id="round-content" class="w-100" style="max-width: 600px;">
+            <div class="matrix-container" id="matrix">
+                {% for letter in matrix %}
+                    <button
+                        class="letter-button"
+                        hx-post="{% url 'main:select_letter' session_id=session.session_id %}"
+                        hx-vals='{"letter": "{{ letter }}"}'
+                        hx-target="#selection-message"
+                        hx-swap="innerHTML"
+                        onclick="this.classList.toggle('selected')">
+                        {{ letter }}
+                    </button>
+                {% endfor %}
+            </div>
+
+            <div id="selection-message" class="text-center mt-3" style="min-height: 100px;"></div>
+
+            <div class="container text-center">
+                <button
+                        class="btn btn-outline-secondary"
+                        hx-post="{% url 'main:api_stop_session' session_id=session.session_id %}">
+                    End Session
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        const socket = new WebSocket('ws://' + window.location.host + '/ws/session/{{ session.session_id }}/');
+        socket.onmessage = function (e) {
+            const data = JSON.parse(e.data);
+            if (data.type === 'session_stop') {
+                window.location.href = "{% url 'main:index' %}";
+            }
+        };
+    </script>
+{% endblock %}

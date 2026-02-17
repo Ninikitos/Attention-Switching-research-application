@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}{% endblock %}
+
+{% block title %}Start attention study{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center aligned-item-center">
+            <div class="col-md-8">
+                <h1 class="card-title mb-4">
+                    <i class="bi bi-eye"></i>
+                    Dual-Sync Attention Metric (DSAM)
+                </h1>
+                <h4 class="mb-4 col-9">
+                    Measuring cognitive load and switching latency in multi-device environments.
+                </h4>
+                <p class="col-9">
+                    We’re constantly bouncing between laptops and phones. Every time we switch,
+                    our brain hitches for a second. DSAM measures exactly how long that "hitch" lasts.
+                </p>
+                <button
+                    class="btn btn-primary"
+                    hx-post="{% url 'main:start_session' %}"
+                    hx-trigger="click"
+                    hx-target="#session-info"
+                    hx-swap="innerHTML"
+                    onclick="this.disabled=true;">
+                    Begin
+                </button>
+                <div id="session-info"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="row col-10 mt-5">
+    <div class="col-6">
+        <h5 class="card-title mb-3">Scan QR code with your<br>phone's camera to sync a session.</h5>
+        <p class="text-muted">
+            Companion app must be installed.
+            At this time only Android app is available.
+            You can find it <a href="https://www.github.com" target="_blank">here</a>
+        </p>
+        <a href="{% url 'main:session' session_id=session_id %}" class="btn btn-primary mt-2">
+            Start study
+        </a>
+    </div>
+    <div class="col-6">
+        <img
+            src="{% url 'main:qr_code' session_id=session_id %}"
+            alt="QR code"
+            class="img-fluid mb-3"
+            style="max-width: 250px; border: 2px solid #ddd; border-radius: 8px; padding: 10px;">
+    </div>
+</div>

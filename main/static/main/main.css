@@ -1,0 +1,27 @@
+.qr-section {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+.qr-section img {
+    max-width: 250px;
+    border: 4px solid white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .matrix-container {
+        gap: 8px;
+        max-width: 100%;
+    }
+
+    .letter-button {
+        min-height: 50px;
+        font-size: 1.4rem;
+    }
+}

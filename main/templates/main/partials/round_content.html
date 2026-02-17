@@ -1,0 +1,25 @@
+<div id="round-content" class="w-100" style="max-width: 600px;">
+    <div class="matrix-container" id="matrix">
+        {% for letter in matrix %}
+            <button
+                    class="letter-button"
+                    hx-post="{% url 'main:select_letter' session_id=session.session_id %}"
+                    hx-vals='{"letter": "{{ letter }}"}'
+                    hx-target="#selection-message"
+                    hx-swap="innerHTML"
+                    onclick="this.classList.toggle('selected')">
+                {{ letter }}
+            </button>
+        {% endfor %}
+    </div>
+
+    <div id="selection-message" class="text-center mt-3" style="min-height: 100px;"></div>
+
+    <div class="container text-center">
+        <button
+                class="btn btn-outline-secondary"
+                hx-post="{% url 'main:api_stop_session' session_id=session.session_id %}">
+            End Session
+        </button>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.matrix-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.letter-button {
+    aspect-ratio: 1;
+    min-height: 70px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: 3px solid #dee2e6;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.letter-button:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.letter-button.selected {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.letter-button:active {
+    transform: scale(0.98);
+}

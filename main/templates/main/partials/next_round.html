@@ -1,0 +1,22 @@
+<div class="container">
+    <p class="mb-3">
+        <strong>Correct letters:</strong> {{ correct_count }} / 2
+    </p>
+    {% if can_proceed %}
+        {% if current_round < total_rounds %}
+            <button
+                    class="btn btn-primary"
+                    hx-post="{% url 'main:next_round' session_id=session_id %}"
+                    hx-target="#round-content"
+                    hx-swap="outerHTML">
+                Next
+            </button>
+        {% else %}
+            <a href="{% url 'main:statistics' session_id=session_id %}" class="btn btn-success btn-lg">
+                View results
+            </a>
+        {% endif %}
+    {% else %}
+        <button class="btn btn-secondary" disabled>Next</button>
+    {% endif %}
+</div>
