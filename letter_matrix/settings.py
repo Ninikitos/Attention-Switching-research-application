@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from email.policy import default
 from pathlib import Path
-from decouple import config, Csv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
